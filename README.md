@@ -48,5 +48,5 @@ flutter run
 
 ## Screenshot
 
-[<img src="./screenshots/01.png" width="250"/>](/screenshots/01.png)
-[<img src="./screenshots/02.png" width="250"/>](/screenshots/02.png)
+[<img src="./Screenshots/01.png" width="250"/>](/Screenshots/01.png)
+[<img src="./Screenshots/02.png" width="250"/>](/Screenshots/02.png)
