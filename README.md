@@ -11,7 +11,7 @@ Break down language barriers effortlessly. My Language Translator app offers sea
 
 2. Clone the repository
 ```bash
-git clone https://github.com/jagadeesh-k-2802/language-translator-flutter.git
+https://github.com/rajms003/translatorapp.git
 ```
 
 3. Install Dependencies
