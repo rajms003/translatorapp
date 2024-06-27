@@ -103,29 +103,6 @@ class _HomepageState extends State<Homepage> {
     setState(() {});
   }
 
-  /// Each time to start a speech recognition session
-  // void _startListening() async {
-  //   await _speechToText.listen(onResult: _onSpeechResult);
-  //   setState(() {});
-  // }
-
-  // /// Manually stop the active speech recognition session
-  // /// Note that there are also timeouts that each platform enforces
-  // /// and the SpeechToText plugin supports setting timeouts on the
-  // /// listen method.
-  // void _stopListening() async {
-  //   await _speechToText.stop();
-  //   setState(() {});
-  // }
-
-  // /// This is the callback that the SpeechToText plugin calls when
-  // /// the platform returns recognized words.
-  // void _onSpeechResult(SpeechRecognitionResult result) {
-  //   setState(() {
-  //     _lastWords = result.recognizedWords;
-  //   });
-  // }
-
   void _toggleRecording() async {
     if (!_speechEnabled) {
       setState(() => _speechEnabled = true);
@@ -154,13 +131,15 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    
-    
     var mq = MediaQuery.of(context).size;
     return Scaffold(
-      
         appBar: AppBar(
-          title: const Center(child: Text('Translator App', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),)),
+          title: const Center(
+              child: Text(
+            'Translator App',
+            style: TextStyle(
+                fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+          )),
           backgroundColor: const Color.fromARGB(255, 1, 61, 79),
         ),
         body: SingleChildScrollView(
@@ -213,7 +192,6 @@ class _HomepageState extends State<Homepage> {
                               ))
                           .toList(),
                       value: selectedLanguage,
-
                       onChanged: (value) {
                         if (value == language[0]) {
                           from = languageCode[0];
@@ -247,7 +225,6 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ),
-                      
                       dropdownStyleData: DropdownStyleData(
                         maxHeight: 200,
                         width: 200,
@@ -262,7 +239,6 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                       menuItemStyleData: const MenuItemStyleData(
-                      
                         height: 40,
                         padding: EdgeInsets.only(left: 14, right: 14),
                       ),
@@ -343,7 +319,6 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ),
-                      
                       dropdownStyleData: DropdownStyleData(
                         maxHeight: 200,
                         width: 200,
@@ -379,13 +354,22 @@ class _HomepageState extends State<Homepage> {
                     child: Stack(children: [
                       Column(
                         children: [
-                          Text(selectedLanguage, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 1, 61, 79)),),
+                          Text(
+                            selectedLanguage,
+                            style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 1, 61, 79)),
+                          ),
                           //text validation
                           Form(
                             key: formkey,
                             child: TextFormField(
                               controller: controller,
-                              style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 1, 61, 79), fontWeight: FontWeight.w500),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Color.fromARGB(255, 1, 61, 79),
+                                  fontWeight: FontWeight.w500),
                               maxLines: 4,
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -404,19 +388,23 @@ class _HomepageState extends State<Homepage> {
                             children: [
                               IconButton(
                                   onPressed: _toggleRecording,
-                                  icon: const Icon(Icons.mic, color: Color.fromARGB(255, 1, 61, 79))),
+                                  icon: const Icon(Icons.mic,
+                                      color: Color.fromARGB(255, 1, 61, 79))),
                               SizedBox(
                                 width: mq.width * .01,
                               ),
                               IconButton(
                                   onPressed: () => speak(controller.text),
-                                  icon: const Icon(Icons.volume_up, color: Color.fromARGB(255, 1, 61, 79),)),
+                                  icon: const Icon(
+                                    Icons.volume_up,
+                                    color: Color.fromARGB(255, 1, 61, 79),
+                                  )),
                               const Spacer(), // Creates flexible space between elements
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-    backgroundColor: const Color.fromARGB(255, 1, 61, 79), // Set background color to blue
-  ),
-                               
+                                  backgroundColor: const Color.fromARGB(255, 1,
+                                      61, 79), // Set background color to blue
+                                ),
                                 onPressed: translate,
                                 child: isloading
                                     ? const SizedBox.square(
@@ -425,7 +413,13 @@ class _HomepageState extends State<Homepage> {
                                           color: Colors.blueAccent,
                                         ),
                                       )
-                                    : const Text('Translate', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),),
+                                    : const Text(
+                                        'Translate',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
+                                      ),
                               ),
                             ],
                           )
@@ -448,27 +442,34 @@ class _HomepageState extends State<Homepage> {
                     child: Stack(children: [
                       Column(
                         children: [
-                          Text(targetLanguage, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 1, 61, 79)),),
+                          Text(
+                            targetLanguage,
+                            style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 1, 61, 79)),
+                          ),
                           TextField(
-                            style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 1, 61, 79)),
+                            style: const TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 1, 61, 79)),
                             readOnly: true,
                             maxLines: 4,
                             decoration: InputDecoration(
-                              border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                              hintText: data,
-                              hintStyle: TextStyle(color: Color.fromARGB(255, 1, 61, 79))
-                            ),
+                                border: const OutlineInputBorder(
+                                    borderSide: BorderSide.none),
+                                hintText: data,
+                                hintStyle: TextStyle(
+                                    color: Color.fromARGB(255, 1, 61, 79))),
                           ),
                           Row(
                             children: [
-                              // IconButton(onPressed: () {}, icon: Icon(Icons.mic)),
-                              // SizedBox(
-                              //   width: mq.width * .01,
-                              // ),
                               IconButton(
                                   onPressed: () => speak(data),
-                                  icon: const Icon(Icons.volume_up, color: Color.fromARGB(255, 1, 61, 79),)),
+                                  icon: const Icon(
+                                    Icons.volume_up,
+                                    color: Color.fromARGB(255, 1, 61, 79),
+                                  )),
                               const Spacer(), // Creates flexible space between elements
                               IconButton(
                                   onPressed: () async {
@@ -481,7 +482,10 @@ class _HomepageState extends State<Homepage> {
                                       ),
                                     );
                                   },
-                                  icon: const Icon(Icons.copy_outlined, color: Color.fromARGB(255, 1, 61, 79),))
+                                  icon: const Icon(
+                                    Icons.copy_outlined,
+                                    color: Color.fromARGB(255, 1, 61, 79),
+                                  ))
                             ],
                           )
                         ],
@@ -490,42 +494,6 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
               ),
-              // ClipRRect(
-              //   borderRadius: BorderRadius.circular(20.0),
-              //   child: Container(
-              //     color: Colors.amber,
-              //     height: mq.height * .255,
-              //     child: Padding(
-              //       padding: const EdgeInsets.all(12.0),
-              //       child: Stack(children: [
-              //         Column(
-              //           children: [
-              //             const Text("English"),
-              //             const TextField(
-              //               maxLines: 3,
-              //               decoration: InputDecoration(
-              //                 border:
-              //                     OutlineInputBorder(borderSide: BorderSide.none),
-              //                 hintText: 'Enter a search term',
-              //               ),
-              //             ),
-              //             Row(
-              //               children: [
-              //                 Icon(Icons.mic),
-              //                 SizedBox(
-              //                   width: mq.width * .05,
-              //                 ),
-              //                 Icon(Icons.volume_up),
-              //                 Spacer(), // Creates flexible space between elements
-              //                 Icon(Icons.copy_outlined)
-              //               ],
-              //             )
-              //           ],
-              //         )
-              //       ]),
-              //     ),
-              //   ),
-              // ),
             ]),
           ),
         ));
